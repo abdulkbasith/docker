@@ -1,0 +1,18 @@
+# Author: Abdul Basith
+
+version: "3"
+services:
+  airflow:
+    image: "registry-url"
+    pull_policy: always
+    container_name: airflow
+    restart: on-failure
+    privileged: true
+    network_mode: bridge
+    environment:
+      AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+    ports:
+      - "8080:8080"
+    volumes:
+      - /opt/airflow/logs:/opt/airflow/logs:rw
+    tty: true
